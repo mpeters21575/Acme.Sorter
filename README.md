@@ -18,3 +18,4 @@ using design patterns (factory and strategy), while honoring the SOLID principle
 
 **Tests:**
 I tried to aim for 100% code coverage, but for this demo project I don't test the front-end. Only the buisiness logic, and extention methods are tested.
+Also pay attention, that I choose to use a textfile that contains a Russian poem to prove that the output is compliant with any culture that is configured on the target system. (UTF-8)
