@@ -3,3 +3,18 @@
 ################################################################################
 
 *.user
+/Acme.Sorter.Domain/bin/Debug/netcoreapp3.1
+/Acme.Sorter/bin/Debug/netcoreapp3.1
+/Acme.Sorter.Contracts/bin/Debug/netcoreapp3.1
+/Acme.Sorter.UnitTests/bin/Debug/netcoreapp3.1
+/Acme.Sorter.UnitTests/obj/Debug/netcoreapp3.1
+*.cache
+/Acme.Sorter.UnitTests/obj/project.assets.json
+/Acme.Sorter.UnitTests/obj/Acme.Sorter.UnitTests.csproj.nuget.g.targets
+/Acme.Sorter.UnitTests/obj/Acme.Sorter.UnitTests.csproj.nuget.g.props
+/Acme.Sorter.UnitTests/obj/Acme.Sorter.UnitTests.csproj.nuget.dgspec.json
+/Acme.Sorter.Domain/obj
+/Acme.Sorter.Contracts/obj
+/Acme.Sorter/obj
+/.vs/VSWorkspaceState.json
+/.vs/Acme.Sorter/v16/.suo
