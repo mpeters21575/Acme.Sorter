@@ -8,7 +8,7 @@ namespace Acme.Sorter.UnitTests
     public class WhenTestingSorters
     {
         [Theory]
-        [InlineData(Contracts.Models.SorterType.Alphabetically, new[] { "D", "A", "C", "B" }, new[] {  "A", "B", "C", "D" })]
+        [InlineData(Contracts.Models.SorterType.Alphabetically, new[] { "D", "A", "C", "B" }, new[] { "A", "B", "C", "D" })]
         [InlineData(Contracts.Models.SorterType.TextLength, new[] { "AAAAA", "AA", "A", "AAAAAA" }, new[] { "A", "AA", "AAAAA", "AAAAAA" })]
         [InlineData(Contracts.Models.SorterType.BubbleSort, new[] { "D", "A", "C", "B" }, new[] { "A", "B", "C", "D" })]
         public void ThenTheAlphabeticalSorterShouldSucceed(Contracts.Models.SorterType sorterType, string[] text, string[] expectedResult)
@@ -18,7 +18,7 @@ namespace Acme.Sorter.UnitTests
                 .WithTextContent(text)
                 .WithSorter(sorterType);
 
-            Assert.Equal(result.Select(q=>q.Key), expectedResult);
+            Assert.Equal(result.Select(q => q.Key), expectedResult);
         }
 
         [Theory]
@@ -37,9 +37,11 @@ namespace Acme.Sorter.UnitTests
         {
             try
             {
-                var sorter = WithBootstrapper
-                    .WithSorters(sorterType)
-                    .FirstOrDefault();
+                WithBootstrapper
+                    .WithSorterFactoryInstance()
+                    .WithTextContent(null)
+                    .WithSorter(sorterType);
+
             }
             catch (Exception exception)
             {

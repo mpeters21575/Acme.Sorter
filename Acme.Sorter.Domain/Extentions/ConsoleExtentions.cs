@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 
 namespace Acme.Sorter.Domain.Extentions
 {
+    [ExcludeFromCodeCoverage]
     public static class ConsoleExtentions
     {
         public static void DisplayToConsole(this IEnumerable<KeyValuePair<string, string>> entries)
