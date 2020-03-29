@@ -6,7 +6,7 @@ using design patterns (factory and strategy), while honoring the SOLID principle
 
 Implementation:
 
-![architecture](https://github.com/mpeters21575/Acme.Sorter/architecture.png)
+![architecture](https://github.com/mpeters21575/Acme.Sorter/blob/master/architecture.PNG)
 
 The application consist of a netcore 3.1 console front-end
 
