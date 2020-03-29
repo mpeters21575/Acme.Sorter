@@ -16,11 +16,7 @@ namespace Acme.Sorter.Domain
 
             container.Configure(config =>
             {
-                config.Scan(_ =>
-                {
-                    _.AssembliesAndExecutablesFromApplicationBaseDirectory();
-                    _.WithDefaultConventions();
-                });
+                config.For<ISorterFactory>().Use<SorterFactory>().Transient();
 
                 config.For<ISorter>().AddInstances(q =>
                 {

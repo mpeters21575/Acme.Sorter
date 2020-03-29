@@ -14,7 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Acme.Sorter.Domain\Acme.Sorter.Domain.csproj" />
+    <ProjectReference Include="..\Acme.Sorter.Domain\Acme.Sorter.Domain.csproj">
+      <Private>true</Private>
+    </ProjectReference>
   </ItemGroup>
 
 </Project>

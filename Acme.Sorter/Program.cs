@@ -8,11 +8,11 @@ namespace Acme.Sorter
     {
         static void Main(string[] args)
         {
-           WithBootstrapper
-                .WithSorterFactoryInstance()
-                .WithTextContent(args)
-                .WithSorter(SorterType.All)
-                .DisplayToConsole();
+            WithBootstrapper
+                 .WithSorterFactoryInstance()
+                 .WithTextContent(args)
+                 .WithSorter(SorterType.All)
+                 .DisplayToConsole();
         }
     }
 }

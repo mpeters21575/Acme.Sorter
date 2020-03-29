@@ -12,7 +12,7 @@ namespace Acme.Sorter.Domain.Factories
     public interface ISorterFactory
     {
         ISorterFactory WithTextContent(string[] args);
-        IEnumerable<string> WithSorter(SorterType sortType);
+        IEnumerable<KeyValuePair<string, string>> WithSorter(SorterType sortType);
     }
 
     public class SorterFactory : ISorterFactory
@@ -25,7 +25,7 @@ namespace Acme.Sorter.Domain.Factories
             _container = container;
         }
 
-        private ISorter Create(SorterType sortertype, string[] text)
+        private ISorter WithSorter(SorterType sortertype, string[] text)
         {
             var sorter = default(ISorter);
             var sorters = _container.GetAllInstances<ISorter>();
@@ -59,11 +59,11 @@ namespace Acme.Sorter.Domain.Factories
             return this;
         }
 
-        public IEnumerable<string> WithSorter(SorterType sortType)
+        public IEnumerable<KeyValuePair<string, string>> WithSorter(SorterType sortType)
         {
             if (sortType == SorterType.All)
             {
-                var result = new List<string>();
+                var result = new List<KeyValuePair<string, string>>();
                 var types = Enum.GetValues(typeof(SorterType)).Cast<SorterType>().Where(q => q != SorterType.All).ToList();
 
                 types.ForEach(type => result.AddRange(Process(type)));
@@ -74,15 +74,12 @@ namespace Acme.Sorter.Domain.Factories
             return Process(sortType);
         }
 
-        private IEnumerable<string> Process(SorterType type)
+        private IEnumerable<KeyValuePair<string, string>> Process(SorterType type)
         {
-            var sorter = Create(type, _text);
-            var results = sorter.Sort().ToList();
-
-            results.Insert(0, $"Processed '{type}'...");
-            results.Add(string.Empty);
-
-            return results;
+            foreach (var w in WithSorter(type, _text).Sort())
+            {
+                yield return new KeyValuePair<string, string>(w, type.ToString());
+            }
         }
     }
 }
