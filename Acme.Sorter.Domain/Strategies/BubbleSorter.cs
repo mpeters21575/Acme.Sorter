@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Acme.Sorter.Domain.Strategies
 {
+    [SorterType(SorterType = Contracts.Models.SorterType.BubbleSort)]
     public class BubbleSorter : ISorter
     {
         public string[] Text { get; set; }

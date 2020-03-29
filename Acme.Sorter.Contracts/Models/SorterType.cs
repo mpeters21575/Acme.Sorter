@@ -2,7 +2,7 @@
 {
     public enum SorterType
     {
-        None,
+        All,
         BubbleSort,
         Alphabetically,
         TextLength

@@ -4,6 +4,7 @@ using System.Linq;
 
 namespace Acme.Sorter.Domain.Strategies
 {
+    [SorterType(SorterType = Contracts.Models.SorterType.TextLength)]
     public class LengthSorter : ISorter
     {
         public string[] Text { get; set; }

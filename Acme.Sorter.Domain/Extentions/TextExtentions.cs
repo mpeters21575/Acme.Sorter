@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Acme.Sorter.Domain
+namespace Acme.Sorter.Domain.Extentions
 {
     public static class TextExtentions
     {
@@ -41,10 +41,7 @@ namespace Acme.Sorter.Domain
         {
             var hashset = new HashSet<string>();
 
-            foreach (var line in text)
-            {
-                hashset.Add(string.IsNullOrWhiteSpace(line) ? string.Empty : line.Clean());
-            }
+            text.ToList().ForEach(line => hashset.Add(string.IsNullOrWhiteSpace(line) ? string.Empty : line.Clean()));
 
             return hashset.ToArray();
         }

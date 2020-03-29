@@ -4,6 +4,7 @@ using System.Linq;
 
 namespace Acme.Sorter.Domain.Strategies
 {
+    [SorterType(SorterType = Contracts.Models.SorterType.Alphabetically)]
     public class AlphabeticalSorter : ISorter
     {
         public string[] Text { get; set; }
