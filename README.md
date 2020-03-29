@@ -6,6 +6,8 @@ using design patterns (factory and strategy), while honoring the SOLID principle
 
 Implementation:
 
+![architecture](https://github.com/mpeters21575/Acme.Sorter/architecture.png)
+
 The application consist of a netcore 3.1 console front-end
 
 Tests:
