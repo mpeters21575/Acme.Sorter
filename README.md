@@ -3,6 +3,7 @@
 **Abstract:**
 The purpose of this project is to demonstrate how you can use multiple sorters, 
 using design patterns (factory and strategy), while honoring the SOLID principles.
+My goal was to make this project 'as-readable' as it can be, and in order to accomplish this, I used fluent coding.
 
 **Implementation:**<br/>
 ![architecture](https://github.com/mpeters21575/Acme.Sorter/blob/master/architecture.PNG)
