@@ -14,7 +14,7 @@ My goal was to make this project 'as-readable' as it can be, and in order to acc
 * Length sorter: Sorts the text file from the smallest sentence to the largest<br/>
 
 **Framework**: netcore 3.1<br/>
-**Dependencies:** structuremap, microsoft dependency injection<br/>
+**Dependencies:** Simple Injector<br/>
 **Unit testing:** XUnit<br/>
 
 **Tests:**
