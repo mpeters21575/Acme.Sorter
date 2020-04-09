@@ -1,4 +1,6 @@
-﻿namespace Acme.Sorter.Contracts.Models
+﻿using System;
+
+namespace Acme.Sorter.Contracts.Models
 {
     public enum SorterType
     {

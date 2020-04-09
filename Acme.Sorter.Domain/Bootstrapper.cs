@@ -2,7 +2,7 @@
 using Acme.Sorter.Domain.Extentions;
 using Acme.Sorter.Domain.Factories;
 using Acme.Sorter.Domain.Strategies;
-using StructureMap;
+using SimpleInjector;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,21 +10,12 @@ namespace Acme.Sorter.Domain
 {
     public static class WithBootstrapper
     {
-        private static IContainer Bootup()
+        private static Container Bootup()
         {
             var container = new Container();
-
-            container.Configure(config =>
-            {
-                config.For<ISorterFactory>().Use<SorterFactory>().Transient();
-
-                config.For<ISorter>().AddInstances(q =>
-                {
-                    q.Type<AlphabeticalSorter>();
-                    q.Type<BubbleSorter>();
-                    q.Type<LengthSorter>();
-                });
-            });
+            container.Collection.Register<ISorter>(new AlphabeticalSorter(), new BubbleSorter(), new LengthSorter());
+            container.Register<ISorterFactory, SorterFactory>();
+            container.Verify();
 
             return container;
         }

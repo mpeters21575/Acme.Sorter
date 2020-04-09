@@ -1,8 +1,6 @@
 ﻿using Acme.Sorter.Contracts;
 using Acme.Sorter.Contracts.Models;
 using Acme.Sorter.Domain.Extentions;
-using Acme.Sorter.Domain.Strategies;
-using StructureMap;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,35 +15,22 @@ namespace Acme.Sorter.Domain.Factories
 
     public class SorterFactory : ISorterFactory
     {
-        private readonly IContainer _container;
-        private string[] _text;
+        private const string FileName = "russian_poem.txt";
 
-        public SorterFactory(IContainer container)
+        private string[] _text;
+        private readonly IEnumerable<ISorter> _sorters;
+
+        public SorterFactory(IEnumerable<ISorter> sorters)
         {
-            _container = container;
+            _sorters = sorters;
         }
 
         private ISorter WithSorter(SorterType sortertype, string[] text)
         {
-            var sorter = default(ISorter);
-            var sorters = _container.GetAllInstances<ISorter>();
+            var sorter = _sorters.SingleOrDefault(q => q.GetType().GetAttributeType().Equals(sortertype));
 
-            if (sorters == null || sorters.Count() == 0) throw new NullReferenceException("No sorters registered");
-
-            switch (sortertype)
-            {
-                case SorterType.BubbleSort:
-                    sorter = sorters.Single(q => q.GetType() == typeof(BubbleSorter));
-                    break;
-                case SorterType.Alphabetically:
-                    sorter = sorters.Single(q => q.GetType() == typeof(AlphabeticalSorter));
-                    break;
-                case SorterType.TextLength:
-                    sorter = sorters.Single(q => q.GetType() == typeof(LengthSorter));
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException($"Unknown sorter '{sortertype}'");
-            }
+            if (sorter == null)
+                throw new UnknownSorterException(sortertype.ToString());
 
             sorter.Text = text.CleanText();
 
@@ -54,7 +39,7 @@ namespace Acme.Sorter.Domain.Factories
 
         public ISorterFactory WithTextContent(string[] args)
         {
-            _text = args.Length == 0 ? "russian_poem.txt".GetText() : args;
+            _text = args.Length == 0 ? FileName.GetText() : args;
 
             return this;
         }

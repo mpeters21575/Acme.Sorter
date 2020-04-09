@@ -1,3 +1,4 @@
+using Acme.Sorter.Contracts.Models;
 using Acme.Sorter.Domain;
 using System;
 using System.Linq;
@@ -62,7 +63,7 @@ namespace Acme.Sorter.UnitTests
             }
             catch (Exception exception)
             {
-                Assert.IsType<ArgumentOutOfRangeException>(exception);
+                Assert.IsType<UnknownSorterException>(exception);
             }
         }
     }
