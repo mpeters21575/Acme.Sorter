@@ -61,10 +61,15 @@ namespace Acme.Sorter.Domain.Factories
 
         private IEnumerable<KeyValuePair<string, string>> Process(SorterType type)
         {
-            foreach (var w in WithSorter(type, _text).Sort())
+            var results = WithSorter(type, _text).Sort();
+            var pairs = new List<KeyValuePair<string, string>>();
+
+            foreach (var result in results)
             {
-                yield return new KeyValuePair<string, string>(w, type.ToString());
+                pairs.Add(new KeyValuePair<string, string>(result, type.ToString()));
             }
+
+            return pairs;
         }
     }
 }
