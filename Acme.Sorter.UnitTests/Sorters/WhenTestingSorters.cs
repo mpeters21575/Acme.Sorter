@@ -13,7 +13,7 @@ namespace Acme.Sorter.UnitTests
         [InlineData(SorterType.Alphabetically, new[] { "D", "A", "C", "B" }, new[] { "A", "B", "C", "D" })]
         [InlineData(SorterType.TextLength, new[] { "AAAAA", "AA", "A", "AAAAAA" }, new[] { "A", "AA", "AAAAA", "AAAAAA" })]
         [InlineData(SorterType.BubbleSort, new[] { "D", "A", "C", "B" }, new[] { "A", "B", "C", "D" })]
-        public void ThenTheAlphabeticalSorterShouldSucceed(Contracts.Models.SorterType sorterType, string[] text, string[] expectedResult)
+        public void ThenTheSortersShouldSucceed(Contracts.Models.SorterType sorterType, string[] text, string[] expectedResult)
         {
             var result = WithBootstrapper
                 .WithSorterFactoryInstance()
